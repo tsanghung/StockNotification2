@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 賦予寫入權限以執行部署
     steps:
       - name: Checkout
         uses: actions/checkout@v4

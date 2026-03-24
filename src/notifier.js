@@ -4,8 +4,8 @@ const axios = require("axios");
  * 透過 LINE Messaging API 發送通知
  */
 async function pushLineMessage(url) {
-  const token = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-  const userId = process.env.LINE_USER_ID;
+  const token = (process.env.LINE_CHANNEL_ACCESS_TOKEN || "").trim();
+  const userId = (process.env.LINE_USER_ID || "").trim();
 
   if (!token || !userId) {
     console.error("錯誤：未設定 LINE_CHANNEL_ACCESS_TOKEN 或 LINE_USER_ID");

@@ -8,8 +8,8 @@ const translate = require("google-translate-api-next");
  */
 async function fetchAndTranslateNews() {
   const rssFeeds = [
-    { name: "國際政經", url: "https://www.reutersagency.com/feed/?best-topics=business&post_type=best", category: "Politics_Economy", lang: "en" },
-    { name: "國內政經", url: "https://money.udn.com/rssfeed/news/1001?ch=money", category: "Politics_Economy", lang: "zh" },
+    { name: "國際政經", url: "https://finance.yahoo.com/news/rssindex", category: "Politics_Economy", lang: "en" },
+    { name: "鉅亨頭條", url: "https://news.cnyes.com/rss/v1/news/category/headline", category: "Politics_Economy", lang: "zh" },
     { name: "AI 趨勢", url: "https://news.google.com/rss/search?q=AI&hl=en-US&gl=US&ceid=US:en", category: "AI_Trends", lang: "en" },
   ];
 

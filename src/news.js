@@ -23,7 +23,7 @@ async function fetchAndTranslateNews() {
       const xml = response.data;
       const parsed = await parser.parseStringPromise(xml);
       
-      const items = parsed.rss.channel[0].item.slice(0, 5); // 每個源取前 5 則
+      const items = parsed.rss.channel[0].item.slice(0, 10); // 每個源取前 10 則
       
       for (const item of items) {
         const title = item.title[0];

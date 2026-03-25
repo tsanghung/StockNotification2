@@ -61,9 +61,9 @@ function generateMorningReportHTML(stocks, news) {
             --card-bg: rgba(30, 41, 59, 0.7);
             --text: #f8fafc;
             --accent: #38bdf8;
-            --up: #ef4444; /* 美股漲為綠，跌為紅，但 Simon 哥在台灣習慣紅漲綠跌嗎？美股通常是綠漲紅跌。我們按美股習慣：綠漲紅跌 */
-            --down: #22c55e; 
-            /* 修正：美股習慣：綠漲紅跌。台灣習慣：紅漲綠跌。SPEC 沒說，我用美股標準：綠漲紅跌，如果您習慣台股紅漲，請告訴我 */
+            /* 顏色顯示設定：採用台股慣例（紅漲綠跌） */
+            --up-color: #ef4444;   /* 紅色 */
+            --down-color: #22c55e; /* 綠色 */
             --green: #22c55e;
             --red: #ef4444;
         }
@@ -141,8 +141,8 @@ function generateMorningReportHTML(stocks, news) {
             font-weight: 800;
             margin: 10px 0;
         }
-        .up { color: var(--green); }
-        .down { color: var(--red); }
+        .up { color: var(--red); }
+        .down { color: var(--green); }
 
         /* 新聞區域 */
         .news-container {

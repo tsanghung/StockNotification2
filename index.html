@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日晨報 - 2026年3月24日星期二</title>
+    <title>每日晨報 - 2026年3月25日星期三</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,9 +12,9 @@
             --card-bg: rgba(30, 41, 59, 0.7);
             --text: #f8fafc;
             --accent: #38bdf8;
-            --up: #ef4444; /* 美股漲為綠，跌為紅，但 Simon 哥在台灣習慣紅漲綠跌嗎？美股通常是綠漲紅跌。我們按美股習慣：綠漲紅跌 */
-            --down: #22c55e; 
-            /* 修正：美股習慣：綠漲紅跌。台灣習慣：紅漲綠跌。SPEC 沒說，我用美股標準：綠漲紅跌，如果您習慣台股紅漲，請告訴我 */
+            /* 顏色顯示設定：採用台股慣例（紅漲綠跌） */
+            --up-color: #ef4444;   /* 紅色 */
+            --down-color: #22c55e; /* 綠色 */
             --green: #22c55e;
             --red: #ef4444;
         }
@@ -92,8 +92,8 @@
             font-weight: 800;
             margin: 10px 0;
         }
-        .up { color: var(--green); }
-        .down { color: var(--red); }
+        .up { color: var(--red); }
+        .down { color: var(--green); }
 
         /* 新聞區域 */
         .news-container {
@@ -148,7 +148,7 @@
     <div class="container">
         <header>
             <h1>每日晨報</h1>
-            <div class="date">2026年3月24日星期二</div>
+            <div class="date">2026年3月25日星期三</div>
         </header>
 
         <div class="section-title">今日股市動態</div>
@@ -157,45 +157,45 @@
     <div class="card stock-card">
       <div class="symbol">^DJI</div>
       <div class="name">道瓊工業指數</div>
-      <div class="price">46,124.06</div>
-      <div class="change down">
-        -84.41 (-0.18%)
+      <div class="price">46,429.49</div>
+      <div class="change up">
+        305.43 (0.66%)
       </div>
     </div>
   
     <div class="card stock-card">
       <div class="symbol">^GSPC</div>
       <div class="name">S&P 500 指數</div>
-      <div class="price">6,556.37</div>
-      <div class="change down">
-        -24.63 (-0.37%)
+      <div class="price">6,591.9</div>
+      <div class="change up">
+        35.53 (0.54%)
       </div>
     </div>
   
     <div class="card stock-card">
       <div class="symbol">^IXIC</div>
       <div class="name">NASDAQ 指數</div>
-      <div class="price">21,761.895</div>
-      <div class="change down">
-        -184.87 (-0.84%)
+      <div class="price">21,929.826</div>
+      <div class="change up">
+        167.93 (0.77%)
       </div>
     </div>
   
     <div class="card stock-card">
       <div class="symbol">^SOX</div>
       <div class="name">費城半導體指數</div>
-      <div class="price">7,872.71</div>
+      <div class="price">7,967.745</div>
       <div class="change up">
-        99.58 (1.28%)
+        95.04 (1.21%)
       </div>
     </div>
   
     <div class="card stock-card">
       <div class="symbol">TSM</div>
       <div class="name">台積電 ADR</div>
-      <div class="price">343.25</div>
+      <div class="price">347.75</div>
       <div class="change up">
-        4.80 (1.42%)
+        4.50 (1.31%)
       </div>
     </div>
   
@@ -208,142 +208,142 @@
         <h3>國內外政經</h3>
         <ul>
       <li>
-        <a href="https://finance.yahoo.com/markets/options/articles/3-etfs-could-cushion-portfolio-142100703.html" target="_blank">
-          <span class="news-title">3 種可以幫助您的投資組合免受戰爭風險的 ETF</span>
-          <span class="news-time">下午02:21</span>
+        <a href="https://finance.yahoo.com/sectors/energy/articles/deep-yellow-tumas-progress-shaping-144100536.html" target="_blank">
+          <span class="news-title">Deep Yellow 的 Tumas 進展如何塑造其鈾開發故事的下一個階段</span>
+          <span class="news-time">下午02:41</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/markets/stocks/articles/lawmakers-zero-nvidia-groq-deal-142319931.html" target="_blank">
-          <span class="news-title">當立法者將 Nvidia-Groq 交易歸零時，您應該擔心 NVDA 股票嗎？</span>
-          <span class="news-time">下午02:23</span>
+        <a href="https://finance.yahoo.com/sectors/energy/articles/why-hc-wainwright-sees-uranium-144058894.html" target="_blank">
+          <span class="news-title">為什麼 HC Wainwright 認為鈾能源處於有利地位，可以實現更大的產量成長</span>
+          <span class="news-time">下午02:40</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/markets/crypto/articles/novabay-rebrands-stablecoin-development-corp-142300645.html" target="_blank">
-          <span class="news-title">NovaBay 更名為穩定幣開發公司，股價上漲 12%</span>
-          <span class="news-time">下午02:23</span>
+        <a href="https://finance.yahoo.com/sectors/energy/articles/energy-fuels-2026-outlook-framed-144057575.html" target="_blank">
+          <span class="news-title">能源如何推動 2026 年展望 將 2025 年視為公司的轉型年</span>
+          <span class="news-time">下午02:40</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/news/if-iran-war-sends-oil-prices-up-100-heres-what-history-says-will-happen-to-the-stock-market-142450571.html" target="_blank">
-          <span class="news-title">如果伊朗戰爭導致油價上漲 100%，歷史上股市將會發生以下情況</span>
-          <span class="news-time">下午02:24</span>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/buy-dip-signal-uranium-stock-143750136.html" target="_blank">
+          <span class="news-title">鈾庫存的「逢低買進」訊號從來都不是錯誤的</span>
+          <span class="news-time">下午02:37</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/sectors/technology/article/exclusive-rivian-ceo-on-how-its-uber-deal-came-together-and-why-the-ai-driver-is-the-future-of-mobility-141312744.html" target="_blank">
-          <span class="news-title">獨家：Rivian 執行長講述其與 Uber 的交易是如何達成的，以及為什麼人工智慧「司機」是移動出行的未來</span>
-          <span class="news-time">下午02:13</span>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/capital-one-investors-spooked-wall-144005908.html" target="_blank">
+          <span class="news-title">第一資本讓投資人感到恐慌，但這就是華爾街的預期</span>
+          <span class="news-time">下午02:40</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/research/reports/ARGUS_46523_MarketOutlook_1774352547000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei" target="_blank">
-          <span class="news-title">每日焦點：戰爭擾亂油價前景</span>
-          <span class="news-time">上午11:42</span>
+        <a href="https://finance.yahoo.com/research/reports/ARGUS_46533_MarketSummary_1774436223000?yptr=yahoo&ncid=yahooproperties_plusresear_nm5q6ze1cei" target="_blank">
+          <span class="news-title">市場文摘：ADM、TIME</span>
+          <span class="news-time">上午10:57</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/markets/stocks/articles/meet-super-semiconductor-stock-isnt-142000366.html" target="_blank">
-          <span class="news-title">認識不是 Nvidia、AMD 或 Broadcom 的超級半導體股票</span>
-          <span class="news-time">下午02:20</span>
+        <a href="https://finance.yahoo.com/sectors/energy/articles/why-encore-energy-2025-production-144055210.html" target="_blank">
+          <span class="news-title">為什麼 enCore Energy 2025 年的產量成長對其合約交付策略至關重要</span>
+          <span class="news-time">下午02:40</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/personal-finance/investing/article/what-would-happen-if-all-of-the-worlds-gold-were-sold-tomorrow-195737847.html" target="_blank">
-          <span class="news-title">如果明天世界上所有的黃金都被賣掉會發生什麼事？</span>
-          <span class="news-time">下午07:57</span>
+        <a href="https://finance.yahoo.com/sectors/energy/articles/why-nexgen-energy-rook-approval-144102895.html" target="_blank">
+          <span class="news-title">為什麼 NexGen Energy 的 Rook I 批准可能標誌著其鈾礦建設的轉折點</span>
+          <span class="news-time">下午02:41</span>
         </a>
       </li>
     
       <li>
-        <a href="https://finance.yahoo.com/markets/stocks/articles/carvana-stock-cvna-outperforming-consumer-142901994.html" target="_blank">
-          <span class="news-title">Carvana 股票：CVNA 的表現是否優於週期性消費板塊？</span>
-          <span class="news-time">下午02:29</span>
+        <a href="https://finance.yahoo.com/markets/currencies/articles/dollar-supported-weak-stocks-higher-143227968.html" target="_blank">
+          <span class="news-title">美元受到股市疲軟和債券殖利率上升的支撐</span>
+          <span class="news-time">下午02:32</span>
         </a>
       </li>
     
       <li>
-        <a href="https://www.investors.com/news/technology/palantir-stock-pltr-pentagon-letter-maven-battlefield-system/?src=A00220&yptr=yahoo" target="_blank">
-          <span class="news-title">隨著五角大廈利用 Maven 戰場系統進行更廣泛的軍事用途，Palantir 股票上漲</span>
-          <span class="news-time">下午02:09</span>
+        <a href="https://finance.yahoo.com/markets/stocks/articles/comfort-systems-stock-fix-outperforming-143224763.html" target="_blank">
+          <span class="news-title">舒適系統股票：FIX 的表現是否優於工業類股？</span>
+          <span class="news-time">下午02:32</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6396359" target="_blank">
-          <span class="news-title">WSJ：美擬調動3000名精銳空降部隊 支援中東行動</span>
-          <span class="news-time">下午10:25</span>
+        <a href="https://news.cnyes.com/news/id/6397118" target="_blank">
+          <span class="news-title">卡達LNG出口恐停擺五年！美國天然氣業者成中東戰事贏家 Venture Global開戰以來飆逾70%</span>
+          <span class="news-time">下午10:28</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6396358" target="_blank">
-          <span class="news-title">阿聯酋石油高層批伊朗挾持荷姆茲海峽：對全球各國的經濟恐怖主義</span>
+        <a href="https://news.cnyes.com/news/id/6397115" target="_blank">
+          <span class="news-title">普丁下令「限制黃金出口」5月1日起生效</span>
+          <span class="news-time">下午10:27</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://news.cnyes.com/news/id/6397121" target="_blank">
+          <span class="news-title">鉅亨速報 - Factset 最新調查：康菲石油(COP-US)EPS預估上修至6.18元，預估目標價為129.50元</span>
+          <span class="news-time">下午10:15</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://news.cnyes.com/news/id/6397120" target="_blank">
+          <span class="news-title">鉅亨速報 - Factset 最新調查：Westlake Corporation(WLK-US)EPS預估上修至1.65元，預估目標價為115.00元</span>
+          <span class="news-time">下午10:15</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://news.cnyes.com/news/id/6397092" target="_blank">
+          <span class="news-title">伊朗外長：美伊未曾談判 「目前」無意展開會談</span>
           <span class="news-time">下午10:10</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6395902" target="_blank">
-          <span class="news-title">業務如常！不甩美伊戰爭威脅 沙烏地阿美、科威特石油公司持續推進能源交易</span>
-          <span class="news-time">下午10:00</span>
+        <a href="https://news.cnyes.com/news/id/6397088" target="_blank">
+          <span class="news-title">〈美股盤後〉美伊談判預期升溫 三大指數齊漲 油價跌破100美元</span>
+          <span class="news-time">下午10:04</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6396341" target="_blank">
-          <span class="news-title">〈美股盤後〉美傳增派空降部隊 私募信貸憂慮重燃 三大指數全黑</span>
-          <span class="news-time">下午09:51</span>
+        <a href="https://news.cnyes.com/news/id/6397110" target="_blank">
+          <span class="news-title">兩利空夾擊 美光逆勢跌逾3%</span>
+          <span class="news-time">下午10:01</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6396360" target="_blank">
-          <span class="news-title">美以持續攻擊伊朗 飛彈擊中「布什爾核電廠」周圍</span>
+        <a href="https://news.cnyes.com/news/id/6397108" target="_blank">
+          <span class="news-title">〈貴金屬盤後〉黃金反彈近2% 中東戰爭不確定性縈繞</span>
+          <span class="news-time">下午09:53</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="https://news.cnyes.com/news/id/6397069" target="_blank">
+          <span class="news-title">〈能源盤後〉伊朗內部分歧？未拒美15點提案 市場押注戰事降溫 油價跌逾2%</span>
           <span class="news-time">下午09:40</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.cnyes.com/news/id/6396346" target="_blank">
-          <span class="news-title">川普：伊朗同意永不擁有核武器 美伊協議接近達成</span>
-          <span class="news-time">下午09:10</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="https://news.cnyes.com/news/id/6396266" target="_blank">
-          <span class="news-title">【袁志峰專欄】小米(1810)業績勝預期</span>
-          <span class="news-time">下午08:50</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="https://news.cnyes.com/news/id/6396348" target="_blank">
-          <span class="news-title">鉅亨速報 - Factset 最新調查：殼牌公司(SHEL-US)EPS預估上修至7.02元，預估目標價為89.50元</span>
-          <span class="news-time">下午08:15</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="https://news.cnyes.com/news/id/6396347" target="_blank">
-          <span class="news-title">鉅亨速報 - Factset 最新調查：殼牌公司SHEL-US的目標價調升至89.5元，幅度約3.47%</span>
-          <span class="news-time">下午08:15</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="https://news.cnyes.com/news/id/6396276" target="_blank">
-          <span class="news-title">升息要回來了嗎？市場押注升溫 但聯準會仍不這麼看</span>
-          <span class="news-time">下午07:00</span>
+        <a href="https://news.cnyes.com/news/id/6397089" target="_blank">
+          <span class="news-title">白宮：若伊朗不接受協議 川普已準備好「釋放地獄戰火」</span>
+          <span class="news-time">下午09:30</span>
         </a>
       </li>
     </ul>
@@ -353,72 +353,72 @@
         <h3>AI 產業趨勢</h3>
         <ul>
       <li>
-        <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxPNVNvaXRtYUlmY1RWZkFoc29rc3dFU2xpSUJZRHpwcmwyQXE0bmMzbEttN0ZVVHdaaTBNcFJjWFBzckROa0FDSlFaYUotZy1sOHVLaHhGbjhMZzduLTBNdWRHdVdQNnFZd3NoX2IyR3B6Q1dMNXprQWNyUTl5R09LU0FqWVhMem5WMU5ycWpKb0hYR3NDdVlQNlNveFZESWhTc1U0?oc=5" target="_blank">
-          <span class="news-title">人工智慧巨頭關閉 Sora 後迪士尼退出 OpenAI 交易 - 好萊塢報導</span>
-          <span class="news-time">下午08:55</span>
+        <a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxPOVRfX0VpeXdvdXctNUtudUk2Z3lYWlNhaVhVdEpGQ1Y0blcyVG9SV3hWVDYtWmpneXcwVkxmMGROc200bDR1UzhKZ3JFN1owbE1fa19JZUhyQWRmZTh0SGp5N2NTVVlpeWFCenFWYTVsaFFIRkhCZUUtU0x4ZUtfTWIzSlZTc0NmeTRDZWVjaXh1LTNn?oc=5" target="_blank">
+          <span class="news-title">TurboQuant：透過極端壓縮重新定義人工智慧效率 - Google 研究</span>
+          <span class="news-time">下午07:57</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9YaW1nTFJtaVpRdDREbW1xREdBVXE1bGdEMTFuN3BpQ1lfeWd2NVBacElPcXZVdkhtekFNSUdpT1gxX0V6dHNWVHpxYWpCN0t0eV9iZXZOTGdDMHl0b0Y3UVYzNTh0bktq0gFuQVVfeXFMUGs1ME44NzBzVGFqWWh5cVJBTXFrSm9LMkJnVW5fUjZhNi0zZkUzLVh5WkdvdE5YN0tqbHZpeEUxWloyemd0bFQtd2dWM2lwT0h6VTBDM3AwRVpFVjdCMW05MkMyRkJFb1NielM4WkE?oc=5" target="_blank">
-          <span class="news-title">OpenAI 終止其 Sora AI 視訊應用程式 - CBS 新聞</span>
-          <span class="news-time">下午08:32</span>
+        <a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQd1cwQlhYLWZCaU5NOUVQR0lneC1kTzBrNWg2dU16RmM0XzdFdWowckdNaGpRdjZLdmhxamU0dnVQbUxfdk1WeGtGamJFQzdKbHEyRmdBdU9WaFVGNTNvSHBRQ2VtMmVlS2I0MzJ1R2VYSFdxSHFnalMzSUE4bWlEVGJ3?oc=5" target="_blank">
+          <span class="news-title">OpenAI 正在關閉 Sora，它的人工智慧視訊生成器 - 紐約時報</span>
+          <span class="news-time">下午10:59</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMilANBVV95cUxNb3Vid2sweWJZZ1hwckVyUnI5dldCcGxLYzZwZzNwLXVaSUtfWkpjM3lUQW5LLXFaY1k0N19PNFBwSUFqMldrTWxuZF9yY0ZnVnlZVldxNUpQRDR6b0VUMjJsNVI1RUNTNkhhZHRiSkZaaUltdUtjdDhyT1Z6cXl2OENsOVpBcXdPeTNJS09lbUlYeE1FeEZZM25VTnhZTER6OW1VVWZTNGxJRlZKbWU4QzM0azN0ZHVLTFNXek9pMDkwOF9ud0dvN28xZ0VLNk1MNFdfYlp0S0JfVHZEMjZDZXVPX09fS185VnBDX1NZekFPSlVQODNwcm54WFQzNUFTR25fdWhrQU0zYU5fOVJYckJDTldQaVN3eEd1Mjg1ekdVcHQ2S3hGeFVjaTQ2WjBFQWVoclVCVjRVLXhjTUhoR0M2RFhXS2pTZk4taTZ2ZUdkS2dCaTRsUjNaZ3hXYUhqZW44cUViY1VEaVZGWTR0Q3hwZC1jLXBEeTNoZE1GZ2xuTUVMMFBtUDJOdGpOMkt5TlJZSA?oc=5" target="_blank">
-          <span class="news-title">獨家| OpenAI 在推出幾個月後廢棄了 Sora 視訊平台 - 華爾街日報</span>
-          <span class="news-time">下午09:56</span>
+        <a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE13Y2g4d0sxSGwxaEF4UkY4ZjZwelRCWFB0anAtRXdmVUY3c0ZwQjhBWkVqWHVIdC1VelM2TWMzY0p1SWEySW5zSHYyWjlmWHhyNHJ6c0R4YlJjUQ?oc=5" target="_blank">
+          <span class="news-title">OpenAI 關閉了 Sora 影片製作應用程式並取消了 10 億美元的迪士尼交易 - BBC</span>
+          <span class="news-time">上午04:48</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE0tVFJiUE84NTRlRHdBSUR5NUNnTnllcjBnMjZzUVJCN1RXS3VJQWxMTVNwUjY5UFk5VzF5MkZJc0xoUkZKZ0tnWDJhNUFnS0JtQXVONzNUNUdFYm81RFRicUFoeHNpdWpaZmlFMXZpZlYxYnBpdEFGR0x3?oc=5" target="_blank">
-          <span class="news-title">在紐約課堂、老師可以使用人工智慧制定計劃但不評分 - 紐約時報中文網</span>
-          <span class="news-time">下午02:30</span>
+        <a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBxSjhhNmprLUw4djBMbENiYnlqSjZ0c2lBR3ZEazNkMnlyTWFJZmlHWU1PLVdlRWx2enNxNkFOS041SWNfRTVsVHpnY2lJUVR6MFVISnU1MkI3dTJnWVVTb01ObDRPR3YwdTVHaTRDVnVWRUE3cVdnSUpTTQ?oc=5" target="_blank">
+          <span class="news-title">OpenAI 突然宣布關閉人工智慧視訊生成器 Sora - 衛報</span>
+          <span class="news-time">下午10:34</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxPNGlkeEhFZmhuWXdWSXJNOFFnOEVScDJJdWZDUUhmVXZsdHRsMF9ETjVwUV81bUlDRDNnZ3d3Tk1IN1ZFYWxWbndBLXdXQnRqVWV0d2hEeXFnSGNUaU9vc3llcFNUc2owZ0FjSDVxMmpILXFyVWNIUlZTQUNkekpoUjJnbGRLYjliOW9pd2g0ZksxV3c?oc=5" target="_blank">
-          <span class="news-title">紐約市教育部門將發布“人工智慧手冊” - 哥倫比亞廣播公司新聞</span>
-          <span class="news-time">下午10:16</span>
+        <a href="https://news.google.com/rss/articles/CBMiigFBVV95cUxQTWRHcnZEbU13VmlqSGw2YmxoWnJEVk93MnJjdFFOVExVN1QxWklSdy1RVUNnOHl2ejRIWGlOdXQ4NHhNbUdZTjJnVENhelQxRDY5bDBwMHN2MW9rb3pZT1A3UHFIZHc3YjJNdUVvRkstODM0WDNqaFl2cy01SWM5dnRUa1Jrck82d2c?oc=5" target="_blank">
+          <span class="news-title">人工智慧如何悄悄登上《紐約時報》 - 大西洋月刊</span>
+          <span class="news-time">下午03:14</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPWnBvbXVMdGxDTWp6clR3SGZieVFLT2pyYXJnV1VDdFI5d3lEbFZpUTdDU2JaWEFhU0Fzd2REUmJwR0pENVhIUDJfWWN2SDdYeVNjZ2w5bXFTMVRkMGhCcWFzbW5RYnJheUo5WkREZWsyMmZnei1tRlV5RWROd2dUbXBpZnYtZmZESnFWczJTQTdyakRobl9xVHFsWm51OUFxbjd2UGRKNDIxUDRLMXdjTnFXSdIBuAFBVV95cUxNdDRkcmNMQnFSQzFKVVNzWG9zT1dFdDBoUlBQQ09WRVFlVHBmeDZ2RU9HaHJuNzhtVEo1S21tc1JuR3VFenFCcktZS0lOUlNBN0JjQnRWejR3TlVtaEcxQUxYVW9iWDJ2WUtQZllUX21qUlNOb0piV0QwT0dWb2RXYUFnc2l0ODd6b0hwWFJOZVlJelY2Nmh0UUJmeEpBUUFoM3lqVDk1OHRZNG52Mjg3dnA1Mms4c2tH?oc=5" target="_blank">
-          <span class="news-title">紐約市學校宣布針對紐約市教育工作者和學校領導的人工智慧指南 - ABC7 New York</span>
-          <span class="news-time">下午07:16</span>
+        <a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5VdnpuWlJEbEN4Ums1bXZxU2ZRalU5WlJsdXR5RWxKWnp6VWN0REJueGM1eEt4MkIzeXRDR1VZZm9qbXRvVFRNWjh1TWhaNWlBWm5rUlFzMTJYQVlrQU5XOW9mZl94NlRhbUxrWmo4SkdIY3k4anY4?oc=5" target="_blank">
+          <span class="news-title">獨家：Kratsios 表示川普人工智慧的推動不會提高電費 - Axios</span>
+          <span class="news-time">下午10:21</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMifkFVX3lxTFBsbGEzSzkwRmdVaVhWMjFpYjFBSWdUT0V1Q1kwR1VZazUydHdkb3RJVUM1MXh0MWVMUUpPekRZV1N3RHYzOWlLX09OVGg1SVZadllYS2JWdEVZME8wb3ktMUNGNk51bkFUYkJmblQwdW5XbWo1Ym9jR3RheFZyUQ?oc=5" target="_blank">
-          <span class="news-title">更好的人工智慧購買：英偉達 vs 美光 - Motley Fool</span>
-          <span class="news-time">下午10:19</span>
+        <a href="https://news.google.com/rss/articles/CBMixAFBVV95cUxOdDE4R0xzRndjWTRhMXg3LXQ2QloxOWFNcjMwQXdZM0w3UXd6Rnh4dTNBMlh6aXZiQ3RXWW9vVlJUMmMzZTMzLUZaRzRVejFZN2lhU0VCay1WMm9vbWF6Tl9PcERpTjNlbmo0UFFkYVZaTG16ZEJBODJPNzUyZldkOW5KZDVvbnZPU0lzWEctbkRfdGtwS3kzR0pLbnlmeWNsMDVXbm9Ta3A3dHJKTHNyRzU0LTRrckZ4dTdYLWdXRUNPZWtt?oc=5" target="_blank">
+          <span class="news-title">億萬富翁福雷斯特抨擊中國，退休基金尋求人工智慧 - Bloomberg.com</span>
+          <span class="news-time">下午10:08</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMirgFBVV95cUxPTzFNdm5uSjRwXzdQM0VzN2xBVXRjSlJhRUJldHc4bGVOLU42SzVWRUpCR2t1NlZGUTRNMEtaaVFhZEZxUkFsM0l4NFA1TXFOQ1YyM0ktdkM4b3ZKaXV2V2xTVzZNMy1kUnlzZUx1OW5FUURVMHFNTEhmU25jOFo3Qk5wS2lNQzZqWFE2b3Z5ck9hRUFZb3Ezc3Jla0d5Z25GcXFRNlJ2N21XWC10eXc?oc=5" target="_blank">
-          <span class="news-title">巴爾的摩確信埃隆馬斯克的人工智慧公司因 Grok 的虛假色情圖片而受到批評 - 哥倫比亞廣播公司新聞</span>
-          <span class="news-time">下午10:19</span>
+        <a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxOS0prellxSjBlVTBNcVI5dnE1eFhuU2tRSFZ1V19FUjM1cl9OcHY3X1doQUpfUjVqWGxpY25FT0JxRlo1d1o1UW52MXM5Yzgzcm9sZkRhUFc1Zm9BS2ZQM09rMjdVOER0b2FtMFZVaUdfMldYbU9JSTQ5N0ZBRHdJYkpwMUdKR1Fmb2RyZDR0em12dC1iaGdmQlBZU3FEN3kwRGt1VDNTdDhXMTlXZEV5aVlVRHp1NWotakJTOF9CZUpIazhuY2t6LWlDV1NXU09BUGMzcUpqWWw5NHNENlhtNzhpamZSZw?oc=5" target="_blank">
+          <span class="news-title">人工智慧熱潮中一個較少討論的挑戰：持續的數據限制 - 《今日美國》</span>
+          <span class="news-time">下午10:02</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE9ZZ0dXNEhjUjJYMVVDd2l3U1J6bUdRSmxubjBLcUpoM1lHYk8xU3FzSkN3dEZzSWVMM3dUb2Z3Nm9XZFNsNzF4aGc3WWZOLVhiRlBDcktqVmJEVzJDVkV0M2JyOA?oc=5" target="_blank">
-          <span class="news-title">宣布推出 Arm AGI CPU：代理 AI 雲端時代的矽基礎 - Arm Newsroom</span>
-          <span class="news-time">下午04:56</span>
+        <a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1PcHY5dHdZOTJnQ0FzcXhhUV9OTUFWNjVab2k1UTFCZjBwQTlxMTJTaGhNTlZ2ZEs2VEFiaklldFB0Y051UlhiRHFmOE9MV29mYUNqeThoWlJOcU1DRTZjNm01dXJDY0J5N0ptV2ktMA?oc=5" target="_blank">
+          <span class="news-title">梅蘭妮亞·川普將一款由人工智慧驅動的機器人帶到白宮，並表示很快就會有更多這樣的機器人 - CNN</span>
+          <span class="news-time">下午05:38</span>
         </a>
       </li>
     
       <li>
-        <a href="https://news.google.com/rss/articles/CBMinAFBVV95cUxPVnc5cFhmRUFMOWV6Mm1PcTA2eVhmWWpxUEw3Ti1vVEZDS2VxUWhkdjlCZkJlY2dpbmlBQkFSY3d1cjhnaG40eUluRHpDQzZCT1FhQWMxVmdsSU82YWFNSDZ4ejExcG1BZVFwbW5nd1NiaVNkLXNfS3lzUHNzM2p4WHdiRnZneGYycDFOS0JaTGxnNlAycFREMlFwSnI?oc=5" target="_blank">
-          <span class="news-title">Arm推出新AI晶片，預計年收入增加數十億美元 - 雅虎財經</span>
-          <span class="news-time">下午05:02</span>
+        <a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxORWR6Q2o3MGkxenNrY1J2eVVRa09CY1FNUGwxQ2ppb05XVkktY3oxekFENHNJSmlxeS04bXQ0Q1NHOUhWMmVzRTlaNmZZejdQVFlobVY1Y05ReWRZWFR6ZnBuRnlJeHU1Q3N2RkJtRVpzTXgzVXRobFlxdWsyVWxINGFfWEhIQlQ2NGk5VGdibkVlODhhNEUwOXZFam5UX3lzMU1NMi1Qdms?oc=5" target="_blank">
+          <span class="news-title">機器人與梅蘭妮亞川普一起出席白宮活動，宣傳人工智慧教師 - 路透中文網</span>
+          <span class="news-time">下午07:33</span>
         </a>
       </li>
     </ul>

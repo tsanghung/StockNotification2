@@ -1,29 +1,29 @@
 const axios = require("axios");
 const xml2js = require("xml2js");
 const translate = require("google-translate-api-next");
+const { chromium } = require("playwright");
 
 /**
  * 抓取新聞並翻譯
- * 來源：Reuters (國際), Economic Daily News (國內), Google News (AI)
+ * 來源：RSS (Yahoo Finance, Google News) + Scraper (Yahoo Finance TW)
  */
 async function fetchAndTranslateNews() {
   const rssFeeds = [
     { name: "國際政經", url: "https://finance.yahoo.com/news/rssindex", category: "Politics_Economy", lang: "en" },
-    { name: "鉅亨頭條", url: "https://news.cnyes.com/rss/v1/news/category/headline", category: "Politics_Economy", lang: "zh" },
     { name: "AI 趨勢", url: "https://news.google.com/rss/search?q=AI&hl=en-US&gl=US&ceid=US:en", category: "AI_Trends", lang: "en" },
   ];
 
   const results = [];
   const parser = new xml2js.Parser();
 
+  // 1. 抓取 RSS 源
   for (const feed of rssFeeds) {
-    console.log(`正在抓取 ${feed.name} 源...`);
+    console.log(`正在抓取 RSS ${feed.name} 源...`);
     try {
       const response = await axios.get(feed.url, { timeout: 10000 });
       const xml = response.data;
       const parsed = await parser.parseStringPromise(xml);
-      
-      const items = parsed.rss.channel[0].item.slice(0, 10); // 每個源取前 10 則
+      const items = parsed.rss.channel[0].item.slice(0, 8);
       
       for (const item of items) {
         const title = item.title[0];
@@ -42,7 +42,6 @@ async function fetchAndTranslateNews() {
 
         results.push({
           title: translatedTitle,
-          original_title: title,
           source_url: link,
           category: feed.category,
           publish_time: pubDate,
@@ -50,8 +49,49 @@ async function fetchAndTranslateNews() {
         });
       }
     } catch (error) {
-      console.error(`抓取 ${feed.name} 失敗:`, error.message);
+      console.error(`RSS 抓取 ${feed.name} 失敗:`, error.message);
     }
+  }
+
+  // 2. 抓取 Yahoo 奇摩股市 (台股盤勢與美股新聞)
+  console.log("正在抓取 Yahoo 奇摩股市 (盤後/盤前) 目標新聞...");
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    
+    const targets = [
+      { name: "台股盤勢", url: "https://tw.stock.yahoo.com/tw-market/", category: "TW_Market_Pre", keywords: ["台股", "盤前", "重點", "法人"] },
+      { name: "美股新聞", url: "https://tw.stock.yahoo.com/us-market-news", category: "US_Market_Recap", keywords: ["美股", "盤後", "收盤", "終場"] }
+    ];
+
+    for (const target of targets) {
+      console.log(`正在掃描 ${target.name}...`);
+      await page.goto(target.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      await page.waitForSelector('a.mega-item-header-link', { timeout: 10000 });
+
+      const articles = await page.evaluate((target) => {
+        const links = Array.from(document.querySelectorAll('a.mega-item-header-link'));
+        return links.map(a => ({
+          title: a.innerText.trim(),
+          source_url: a.href,
+          publish_time: new Date().toISOString() // 抓取時的時間
+        })).filter(art => target.keywords.some(k => art.title.includes(k)));
+      }, target);
+
+      // 每個類別取前 3 則最相關的
+      articles.slice(0, 3).forEach(art => {
+        results.push({
+          ...art,
+          category: target.category,
+          lang: "zh"
+        });
+      });
+    }
+  } catch (error) {
+    console.error("Yahoo 奇摩股市抓取失敗:", error.message);
+  } finally {
+    if (browser) await browser.close();
   }
 
   return results;

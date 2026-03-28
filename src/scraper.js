@@ -1,9 +1,9 @@
 const YahooFinance = require('yahoo-finance2').default;
+const { chromium } = require('playwright');
 const yahooFinance = new YahooFinance();
 
 /**
- * 抓取 Yahoo Finance 的股市數據
- * 包含：道瓊 (^DJI), S&P 500 (^GSPC), NASDAQ (^IXIC), 費城半導體 (^SOX), 台積電 ADR (TSM)
+ * 抓取股市數據，包含 Yahoo Finance 與網頁爬取
  */
 async function fetchStockData() {
   const symbols = [
@@ -16,10 +16,10 @@ async function fetchStockData() {
 
   const results = [];
 
+  // 1. 抓取標準 Yahoo Finance 數據
   try {
     for (const item of symbols) {
       console.log(`正在抓取 ${item.name} (${item.symbol})...`);
-      // 使用 yahoo-finance2 獲取即時報價
       const quote = await yahooFinance.quote(item.symbol);
       
       if (quote) {
@@ -30,12 +30,44 @@ async function fetchStockData() {
           change: quote.regularMarketChange.toFixed(2),
           change_percent: (quote.regularMarketChangePercent).toFixed(2) + "%",
         });
-      } else {
-        console.warn(`無法獲取 ${item.name} 的數據`);
       }
     }
   } catch (error) {
-    console.error("抓取過程中發生錯誤:", error);
+    console.error("Yahoo Finance 抓取錯誤:", error);
+  }
+
+  // 2. 抓取臺股期貨 (TX) - 需網頁爬取
+  console.log("正在抓取 臺股期貨 (TX)...");
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    await page.goto('https://tw.stock.yahoo.com/future/WTX&', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('span.Fz\\(32px\\)', { timeout: 10000 });
+    
+    const txData = await page.evaluate(() => {
+      const price = document.querySelector('span.Fz\\(32px\\)')?.innerText;
+      const changeText = document.querySelector('span.Fz\\(20px\\)')?.innerText || "0";
+      // 處理漲跌符號與百分比
+      const isUp = document.querySelector('span.Fz\\(20px\\)')?.closest('.C\\(\\$c-trend-up\\)') !== null;
+      const isDown = document.querySelector('span.Fz\\(20px\\)')?.closest('.C\\(\\$c-trend-down\\)') !== null;
+      
+      return { price, change: (isDown ? "-" : "") + changeText.split(' ')[0], percent: changeText.match(/\((.*)\)/)?.[1] || "0%" };
+    });
+
+    if (txData.price) {
+      results.push({
+        name: "臺股期貨",
+        symbol: "TX",
+        price: txData.price,
+        change: txData.change,
+        change_percent: txData.percent,
+      });
+    }
+  } catch (error) {
+    console.error("臺股期貨抓取錯誤:", error.message);
+  } finally {
+    if (browser) await browser.close();
   }
 
   return results;

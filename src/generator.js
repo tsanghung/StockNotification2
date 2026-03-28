@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("fs");
 
 /**
  * 產生每日晨報 HTML
@@ -9,7 +8,8 @@ function generateMorningReportHTML(stocks, news) {
     year: "numeric",
     month: "long",
     day: "numeric",
-    weekday: "long"
+    weekday: "long",
+    timeZone: "Asia/Taipei"
   });
 
   const stockCards = stocks.map(s => `
@@ -17,35 +17,46 @@ function generateMorningReportHTML(stocks, news) {
       <div class="symbol">${s.symbol}</div>
       <div class="name">${s.name}</div>
       <div class="price">${s.price}</div>
-      <div class="change ${parseFloat(s.change) >= 0 ? "up" : "down"}">
+      <div class="change ${parseFloat(s.change.replace(/,/g, '')) >= 0 ? "up" : "down"}">
         ${s.change} (${s.change_percent})
       </div>
     </div>
   `).join("");
 
-  const newsCategories = {
+  // 定義新聞區塊及其對應的類別
+  const recapCategories = {
+    US_Market_Recap: "美股盤後回顧",
+    TW_Market_Pre: "台股盤前重點"
+  };
+
+  const focusCategories = {
     Politics_Economy: "國內外政經",
     AI_Trends: "AI 產業趨勢"
   };
 
-  const newsSections = Object.entries(newsCategories).map(([cat, label]) => {
-    const items = news.filter(n => n.category === cat);
-    const listItems = items.length > 0 ? items.map(n => `
-      <li>
-        <a href="${n.source_url}" target="_blank">
-          <span class="news-title">${n.title}</span>
-          <span class="news-time">${new Date(n.publish_time).toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit" })}</span>
-        </a>
-      </li>
-    `).join("") : "<li>目前無重大更新</li>";
+  const generateNewsGrid = (categories) => {
+    return Object.entries(categories).map(([cat, label]) => {
+      const items = news.filter(n => n.category === cat);
+      const listItems = items.length > 0 ? items.map(n => `
+        <li>
+          <a href="${n.source_url}" target="_blank">
+            <span class="news-title">${n.title}</span>
+            <span class="news-time">${n.publish_time ? new Date(n.publish_time).toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Taipei" }) : ""}</span>
+          </a>
+        </li>
+      `).join("") : "<li>目前無重大更新</li>";
 
-    return `
-      <div class="news-section">
-        <h3>${label}</h3>
-        <ul>${listItems}</ul>
-      </div>
-    `;
-  }).join("");
+      return `
+        <div class="news-section">
+          <h3>${label}</h3>
+          <ul>${listItems}</ul>
+        </div>
+      `;
+    }).join("");
+  };
+
+  const recapSections = generateNewsGrid(recapCategories);
+  const focusSections = generateNewsGrid(focusCategories);
 
   const htmlContent = `
 <!DOCTYPE html>
@@ -149,6 +160,7 @@ function generateMorningReportHTML(stocks, news) {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
+            margin-bottom: 40px;
         }
         .news-section h3 {
             color: var(--accent);
@@ -205,9 +217,14 @@ function generateMorningReportHTML(stocks, news) {
             ${stockCards}
         </div>
 
+        <div class="section-title">盤勢重點回顧</div>
+        <div class="news-container">
+            ${recapSections}
+        </div>
+
         <div class="section-title">焦點新聞</div>
         <div class="news-container">
-            ${newsSections}
+            ${focusSections}
         </div>
 
         <footer>
@@ -218,8 +235,8 @@ function generateMorningReportHTML(stocks, news) {
 </html>
   `;
   
-  if (!require("fs").existsSync("public")) require("fs").mkdirSync("public");
-  require("fs").writeFileSync("public/index.html", htmlContent);
+  if (!fs.existsSync("public")) fs.mkdirSync("public");
+  fs.writeFileSync("public/index.html", htmlContent);
   console.log("HTML 報表已生成於 public/index.html");
 }
 

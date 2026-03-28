@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 22 * * *' # 國際標準時間 (UTC) 22:00 等於台灣時間 06:00
   workflow_dispatch: # 允許手動觸發測試
+  push:
+    branches:
+      - main
 
 jobs:
   build-and-deploy:
@@ -22,6 +25,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
 
       - name: Run automation script
         env:

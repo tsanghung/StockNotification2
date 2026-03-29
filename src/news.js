@@ -79,8 +79,8 @@ async function fetchAndTranslateNews() {
         })).filter(art => target.keywords.some(k => art.title.includes(k)));
       }, target);
 
-      // 每個類別取前 3 則最相關的
-      articles.slice(0, 3).forEach(art => {
+      // 每個類別取前 5 則最相關的
+      articles.slice(0, 5).forEach(art => {
         results.push({
           ...art,
           category: target.category,

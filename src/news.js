@@ -61,8 +61,8 @@ async function fetchAndTranslateNews() {
     const page = await browser.newPage();
     
     const targets = [
-      { name: "台股盤勢", url: "https://tw.stock.yahoo.com/tw-market/", category: "TW_Market_Pre", keywords: ["台股", "盤前", "重點", "法人"] },
-      { name: "美股新聞", url: "https://tw.stock.yahoo.com/us-market-news", category: "US_Market_Recap", keywords: ["美股", "盤後", "收盤", "終場"] }
+      { name: "台股盤勢", url: "https://tw.stock.yahoo.com/tw-market/", category: "TW_Market_Pre", keywords: ["台股", "盤前", "重點", "法人"], excludeKeywords: [] },
+      { name: "美股新聞", url: "https://tw.stock.yahoo.com/us-market-news", category: "US_Market_Recap", keywords: ["美股", "盤後", "收盤", "終場"], excludeKeywords: ["台股盤前", "台股週報"] }
     ];
 
     for (const target of targets) {
@@ -76,7 +76,11 @@ async function fetchAndTranslateNews() {
           title: a.innerText.trim(),
           source_url: a.href,
           publish_time: new Date().toISOString() // 抓取時的時間
-        })).filter(art => target.keywords.some(k => art.title.includes(k)));
+        })).filter(art => {
+          const hasKeyword = target.keywords.some(k => art.title.includes(k));
+          const hasExclude = target.excludeKeywords && target.excludeKeywords.length > 0 && target.excludeKeywords.some(k => art.title.includes(k));
+          return hasKeyword && !hasExclude;
+        });
       }, target);
 
       // 每個類別取前 5 則最相關的

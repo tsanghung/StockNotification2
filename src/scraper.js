@@ -36,13 +36,13 @@ async function fetchStockData() {
     console.error("Yahoo Finance 抓取錯誤:", error);
   }
 
-  // 2. 抓取臺股期貨 (TX) - 需網頁爬取
-  console.log("正在抓取 臺股期貨 (TX)...");
+  // 2. 抓取台指期現貨 (WTX00) - 需網頁爬取
+  console.log("正在抓取 台指期現貨 (WTX00)...");
   let browser;
   try {
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage();
-    await page.goto('https://tw.stock.yahoo.com/future/WTX&', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.goto('https://tw.stock.yahoo.com/future/WTX00', { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForSelector('span.Fz\\(32px\\)', { timeout: 10000 });
     
     const txData = await page.evaluate(() => {
@@ -66,15 +66,15 @@ async function fetchStockData() {
 
     if (txData.price) {
       results.push({
-        name: "臺股期貨",
-        symbol: "TX",
+        name: "台指期現貨",
+        symbol: "WTX00",
         price: txData.price,
         change: txData.change,
         change_percent: txData.percent,
       });
     }
   } catch (error) {
-    console.error("臺股期貨抓取錯誤:", error.message);
+    console.error("台指期現貨抓取錯誤:", error.message);
   } finally {
     if (browser) await browser.close();
   }

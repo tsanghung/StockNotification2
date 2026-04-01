@@ -47,12 +47,21 @@ async function fetchStockData() {
     
     const txData = await page.evaluate(() => {
       const price = document.querySelector('span.Fz\\(32px\\)')?.innerText;
-      const changeText = document.querySelector('span.Fz\\(20px\\)')?.innerText || "0";
-      // 處理漲跌符號與百分比
-      const isUp = document.querySelector('span.Fz\\(20px\\)')?.closest('.C\\(\\$c-trend-up\\)') !== null;
-      const isDown = document.querySelector('span.Fz\\(20px\\)')?.closest('.C\\(\\$c-trend-down\\)') !== null;
+      const changeSpans = Array.from(document.querySelectorAll('span.Fz\\(20px\\)'));
+      const amount = changeSpans[0]?.innerText || "0";
+      const percent = changeSpans[1]?.innerText || "0%";
       
-      return { price, change: (isDown ? "-" : "") + changeText.split(' ')[0], percent: changeText.match(/\((.*)\)/)?.[1] || "0%" };
+      const isUp = changeSpans[0]?.closest('.C\\(\\$c-trend-up\\)') !== null;
+      const isDown = changeSpans[0]?.closest('.C\\(\\$c-trend-down\\)') !== null;
+      
+      // 移除百分比的括號
+      const cleanPercent = percent.replace(/[()]/g, '');
+      
+      return { 
+        price, 
+        change: (isDown ? "-" : (isUp ? "+" : "")) + amount, 
+        percent: cleanPercent 
+      };
     });
 
     if (txData.price) {
